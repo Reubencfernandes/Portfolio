@@ -4,8 +4,6 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
     try {
         const { prompt } = await request.json();
-        console.log('Received prompt:', prompt);
-        
         if (!prompt) {
             return NextResponse.json(
                 { error: "Prompt is required" },
@@ -19,11 +17,11 @@ export async function POST(request: Request) {
         try {
             const result = await model.generateContent(prompt);
             const response = await result.response.text();
-            console.log('Generated response:', response);
-
+            console.log('Gemini API Response:', response);
+            const parsed = JSON.parse(response);
             return NextResponse.json({ 
-             response,
-             status: 200
+                description: parsed.description, 
+                projects: parsed.projects
             });
         } catch (generationError) {
             console.error('Gemini API Generation Error:', generationError);
