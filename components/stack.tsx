@@ -53,7 +53,7 @@ const TechStack: React.FC = () => {
                     Skills & Tools
                 </h2>
                 <div className="grid gap-6 md:grid-cols-2 max-w-[980px] mx-auto">
-                    {Object.entries(techCategories).map(([key, { title, technologies }], index) => (
+                    {Object.entries(techCategories).map(([key, { title, technologies }]) => (
                         <div key={key} className="overflow-hidden  p-6">
                             <h3 className="text-primary text-xl font-semibold mb-4">{title}</h3>
                             <div className="grid grid-cols-3 gap-4">

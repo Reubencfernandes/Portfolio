@@ -17,7 +17,7 @@ export default function Hero() {
                     <div className="flex flex-col items-center justify-center max-w-[90vw]">
                         <div className="text-center">
                             <h1 className="text-balance text-3xl font-semibold leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                                Hello, I'm&nbsp; <AuroraText>Reuben Fernandes</AuroraText>
+                                Hello, I&apos;m&nbsp; <AuroraText>Reuben Fernandes</AuroraText>
                                
                             </h1>
                         </div>

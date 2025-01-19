@@ -8,7 +8,16 @@ import { useState, useEffect } from "react";
 
 export default function Home({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const language = searchParams.lang as string | 'english';
-  const [projects, setProjects] = useState<any>([]);
+  interface Project {
+    title: string;
+    link: string;
+    placeholder: string;
+    date: string;
+    description: string;
+    stack: string;
+  }
+
+  const [projects, setProjects] = useState<Project[]>([]);
   const [description, setDescription] = useState('');
 
   useEffect(() => {
@@ -98,7 +107,7 @@ export default function Home({ searchParams }: { searchParams: { [key: string]: 
       }
     };
     fetchData();
-  }, []);
+  }, [language]);
 
   return (
     <div>
