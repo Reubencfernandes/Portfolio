@@ -26,7 +26,6 @@ export async function POST(request: Request) {
         try {
             const result = await model.generateContent(prompt);
             const response = await result.response.text();
-            console.log('Gemini API Response:', response);
             const parsed = JSON.parse(response);
             return NextResponse.json({ 
                 description: parsed.description, 
