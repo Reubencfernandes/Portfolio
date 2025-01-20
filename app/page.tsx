@@ -19,6 +19,7 @@ export default function Home({ searchParams }: { searchParams: { [key: string]: 
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [description, setDescription] = useState('');
+  const[show, setShow] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +44,7 @@ export default function Home({ searchParams }: { searchParams: { [key: string]: 
         ]
     }
     
-    Task: Create a JSON output for Reuben Chagas Fernandes based on the following details, Use the language ${language}:  
+    Task: Create a JSON output for Reuben Chagas Fernandes based on the following details, Use the language ${language} and add variation to the description:  
     
     General Description: Reuben Chagas Fernandes is an undergraduate student in Computer Science and Engineering (CSE) with expertise in various programming languages and frameworks, including ReactJS, NextJS, Generative AI, Flutter, TailwindCSS, Node.js, PHP, and Python. He has professional experience in Android application development and a strong passion for full-stack development, game development, UI/UX design, and Artificial Intelligence (AI). He is a beginner in Japanese and Portuguese, reflecting his interest in exploring new cultures and languages.  
     
@@ -101,7 +102,7 @@ export default function Home({ searchParams }: { searchParams: { [key: string]: 
         const data = await res.json();
         setDescription(data.description);
         setProjects(data.projects);
-  
+        setShow(true)
       } catch (error) { 
         console.error(error);
       }
@@ -112,8 +113,8 @@ export default function Home({ searchParams }: { searchParams: { [key: string]: 
   return (
     <div>
       <Hero />
-      <About description={description}/>
-      <Projects projects={projects} />
+      <About description={description} show={show}/>
+      <Projects projects={projects} show={show} />
       <TechStack />
       <Footer />
     </div>

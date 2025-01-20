@@ -11,8 +11,17 @@ export async function POST(request: Request) {
             );
         }
 
+        const generationConfig = {
+            temperature: 2,
+            topP: 0.95,
+            topK: 40
+        };
+
         const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ 
+            model: "gemini-1.5-flash",
+            generationConfig
+        });
         
         try {
             const result = await model.generateContent(prompt);
