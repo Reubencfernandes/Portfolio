@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://reubenfernandes.dev/sitemap.xml
+
+# Specific crawl instructions for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block unnecessary crawling of build files
+Disallow: /_next/
+Disallow: /api/
+
+# Crawl delay (optional - can be adjusted based on server capacity)
+Crawl-delay: 1 

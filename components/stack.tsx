@@ -14,6 +14,8 @@ const techIcons: { [key: string]: string } = {
     "Flutter": "https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg",
     "Next.js": "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg",
     "Tailwind CSS": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png",
+    "PyTorch": "https://blog.christianperone.com/wp-content/uploads/2018/10/pytorch-logo.png",
+    "Hugging Face": "https://registry.npmmirror.com/@lobehub/icons-static-png/1.59.0/files/dark/huggingface-color.png",
     "MySQL": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
     "MongoDB": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg",
     "Git": "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg",
@@ -33,7 +35,7 @@ const techCategories = {
     },
     "Frameworks/Libraries": {
         title: "Frameworks/Libraries",
-        technologies: ["Node.js", "React.js", "Flutter", "Next.js", "Tailwind CSS"]
+        technologies: ["Node.js", "React.js", "Flutter", "Next.js", "Tailwind CSS", "PyTorch"]
     },
     "Databases": {
         title: "Databases",
@@ -41,7 +43,7 @@ const techCategories = {
     },
     "Tools/Technologies": {
         title: "Tools/Technologies",
-        technologies: ["Git", "Github", "Spline", "AWS Bedrock", "Google Gemini API", "Figma", "Github Copilot"]
+        technologies: ["Git", "Github", "Spline", "AWS Bedrock", "Google Gemini API", "Figma", "Github Copilot", "Hugging Face"]
     }
 };
 
@@ -67,6 +69,7 @@ const TechStack: React.FC = () => {
                                                 src={techIcons[name]}
                                                 alt={`${name} icon`}
                                                 className="object-contain h-full w-full"
+                                                loading="lazy"
                                             />
                                         </div>
                                         <span className="text-sm font-medium text-center text-muted-foreground">{name}</span>
