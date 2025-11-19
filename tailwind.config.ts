@@ -14,42 +14,42 @@ const config: Config = {
 			},
 			colors: {
 				text: '#070a05',
-				background: '#f5f9f4',
-				primary: '#73aa61',
-				secondary: '#9cc7ca',
-				accent: '#87a6be',
-				foreground: 'hsl(var(--foreground))',
+				background: 'var(--background)',
+				primary: 'var(--primary)',
+				secondary: 'var(--secondary)',
+				accent: 'var(--accent)',
+				foreground: 'var(--foreground)',
 				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					DEFAULT: 'var(--card)',
+					foreground: 'var(--card-foreground)'
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: 'var(--popover)',
+					foreground: 'var(--popover-foreground)'
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: 'var(--muted)',
+					foreground: 'var(--muted-foreground)'
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
+					DEFAULT: 'var(--destructive)',
+					foreground: 'var(--destructive-foreground)'
 				},
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
+				border: 'var(--border)',
+				input: 'var(--input)',
+				ring: 'var(--ring)',
 				chart: {
-					'1': 'hsl(var(--chart-1))',
-					'2': 'hsl(var(--chart-2))',
-					'3': 'hsl(var(--chart-3))',
-					'4': 'hsl(var(--chart-4))',
-					'5': 'hsl(var(--chart-5))'
+					'1': 'var(--chart-1)',
+					'2': 'var(--chart-2)',
+					'3': 'var(--chart-3)',
+					'4': 'var(--chart-4)',
+					'5': 'var(--chart-5)'
 				},
-				'color-1': 'hsl(var(--color-1))',
-				'color-2': 'hsl(var(--color-2))',
-				'color-3': 'hsl(var(--color-3))',
-				'color-4': 'hsl(var(--color-4))',
-				'color-5': 'hsl(var(--color-5))'
+				'color-1': 'var(--color-1)',
+				'color-2': 'var(--color-2)',
+				'color-3': 'var(--color-3)',
+				'color-4': 'var(--color-4)',
+				'color-5': 'var(--color-5)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
