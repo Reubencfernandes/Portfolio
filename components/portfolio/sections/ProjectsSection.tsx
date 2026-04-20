@@ -64,7 +64,7 @@ function ProjectCard({
   project: Project;
   index: number;
   totalCards: number;
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 

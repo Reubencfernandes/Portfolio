@@ -22,19 +22,19 @@ export function ContactSection() {
           </FadeIn>
           <FadeIn delay={0.4} duration={0.8}>
             <div className="flex flex-col gap-6">
-              <a href="mailto:reuben@example.com" className="flex items-center gap-4 text-[#1A0F08] hover:text-[#E63F19] transition-colors group">
+              <a href="mailto:18reuchagasfernandes@gmail.com" className="flex items-center gap-4 text-[#1A0F08] hover:text-[#E63F19] transition-colors group">
                 <div className="w-12 h-12 rounded-full border-2 border-[#1A0F08] flex items-center justify-center group-hover:border-[#E63F19] transition-colors">
                   <Mail size={20} />
                 </div>
-                <span className="font-medium uppercase tracking-wider text-sm sm:text-base">reuben@example.com</span>
+                <span className="font-medium uppercase tracking-wider text-sm sm:text-base">18reuchagasfernandes@gmail.com</span>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-[#1A0F08] hover:text-[#E63F19] transition-colors group">
+              <a href="https://www.linkedin.com/in/reuben-chagas-fernandes/" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-[#1A0F08] hover:text-[#E63F19] transition-colors group">
                 <div className="w-12 h-12 rounded-full border-2 border-[#1A0F08] flex items-center justify-center group-hover:border-[#E63F19] transition-colors">
                   <Linkedin size={20} />
                 </div>
                 <span className="font-medium uppercase tracking-wider text-sm sm:text-base">LinkedIn</span>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-[#1A0F08] hover:text-[#E63F19] transition-colors group">
+              <a href="https://x.com/18reuchagas" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-[#1A0F08] hover:text-[#E63F19] transition-colors group">
                 <div className="w-12 h-12 rounded-full border-2 border-[#1A0F08] flex items-center justify-center group-hover:border-[#E63F19] transition-colors">
                   <Twitter size={20} />
                 </div>
