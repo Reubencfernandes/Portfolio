@@ -11,6 +11,8 @@ const config: Config = {
 		extend: {
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
+				sans: ['var(--font-kanit)', 'sans-serif'],
+				mono: ['var(--font-jetbrains-mono)', 'monospace'],
 			},
 			colors: {
 				text: '#070a05',

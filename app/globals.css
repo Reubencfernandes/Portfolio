@@ -7,9 +7,22 @@
     @apply border-border;
   }
 
+  html,
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .hero-bg {
+    background: linear-gradient(180deg, #FFE0D0 0%, #F15A24 45%, #C42D0B 100%);
+  }
+
+  .dark-section {
+    background-color: #0C0C0C;
+    color: #D7E2EA;
   }
 }
 
