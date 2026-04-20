@@ -4,9 +4,6 @@ import React, { useEffect, useRef } from 'react';
 import { ContactButton } from '../ContactButton';
 import { FadeIn } from '../FadeIn';
 
-const HERO_VIDEO_URL =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_34DpnLwtmxkLgtVe8psPn1j2G8i/hf_20260420_065417_5ce73690-34f9-4426-9b35-aaa8c213d44b.mp4';
-
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -79,7 +76,7 @@ export function HeroSection() {
           <FadeIn delay={0.1} x={60} y={0} duration={1.0} className="w-full h-full">
             <video
               ref={videoRef}
-              src={HERO_VIDEO_URL}
+              src="/Reuben.mp4"
               className="absolute right-0 top-0 bottom-0 w-full h-full object-cover object-center pointer-events-none"
               style={{
                 WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 35%, black 100%)',

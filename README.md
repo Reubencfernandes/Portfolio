@@ -1,3 +1,13 @@
+---
+title: Reuben Fernandes Portfolio
+emoji: 🧑‍💻
+colorFrom: yellow
+colorTo: red
+sdk: docker
+app_port: 7860
+pinned: true
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
