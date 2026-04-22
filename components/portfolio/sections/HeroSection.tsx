@@ -38,9 +38,8 @@ export function HeroSection() {
 
           <nav className="flex w-full md:w-auto justify-between md:justify-center flex-1 gap-2 sm:gap-6 md:gap-8">
             <a href="#about" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">About</a>
-            <a href="#projects" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200 underline underline-offset-4 decoration-2">Projects</a>
-            <a href="#resume" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Resume</a>
-            <a href="#contact" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Contact</a>
+            <a href="#projects" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Projects</a>
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Resume</a>
           </nav>
 
           <div className="hidden md:flex flex-1 justify-end">
@@ -67,7 +66,6 @@ export function HeroSection() {
           <FadeIn delay={0.6} y={20} duration={0.7} className="md:hidden mt-4">
             <div className="flex flex-col items-start gap-1">
               <p className="text-[#FFE0D0] font-medium text-[10px] uppercase tracking-wider opacity-80 drop-shadow-md">Based in Goa, India</p>
-              <p className="text-[#FFE0D0] font-medium text-[10px] uppercase tracking-wider opacity-80 drop-shadow-md">Available worldwide</p>
             </div>
           </FadeIn>
         </div>
@@ -93,7 +91,6 @@ export function HeroSection() {
       <FadeIn delay={0.6} y={20} duration={0.7} className="hidden md:flex z-10 absolute bottom-20 right-10">
         <div className="flex flex-col items-end gap-1">
           <p className="text-[#FFE0D0] font-medium text-sm uppercase tracking-wider text-right opacity-90 drop-shadow-md">Based in Goa, India</p>
-          <p className="text-[#FFE0D0] font-medium text-sm uppercase tracking-wider text-right opacity-90 drop-shadow-md">Available worldwide</p>
         </div>
       </FadeIn>
     </section>

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://reubenfernandes.dev/sitemap.xml
+Sitemap: https://reuben-fernandes.xyz/sitemap.xml
 
 # Specific crawl instructions for major search engines
 User-agent: Googlebot

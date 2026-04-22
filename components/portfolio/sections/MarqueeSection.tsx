@@ -2,12 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React, { useEffect, useState } from 'react';
-import OpenAI from '@lobehub/icons/es/OpenAI/components/Mono';
-import Anthropic from '@lobehub/icons/es/Anthropic/components/Mono';
 import Claude from '@lobehub/icons/es/Claude/components/Mono';
-import Gemini from '@lobehub/icons/es/Gemini/components/Mono';
 import HuggingFace from '@lobehub/icons/es/HuggingFace/components/Mono';
-import Ollama from '@lobehub/icons/es/Ollama/components/Mono';
 
 type TechItem = {
   name: string;
@@ -28,12 +24,10 @@ const row1: TechItem[] = [
 const row2: TechItem[] = [
   { name: 'Firebase', icon: <img src="https://cdn.simpleicons.org/firebase/D7E2EA" alt="Firebase" referrerPolicy="no-referrer" className="w-14 h-14" /> },
   { name: 'MongoDB', icon: <img src="https://cdn.simpleicons.org/mongodb/D7E2EA" alt="MongoDB" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'OpenAI', icon: <OpenAI size={56} style={{ color: '#D7E2EA' }} /> },
-  { name: 'Anthropic', icon: <Anthropic size={56} style={{ color: '#D7E2EA' }} /> },
   { name: 'Claude', icon: <Claude size={56} style={{ color: '#D7E2EA' }} /> },
-  { name: 'Gemini', icon: <Gemini size={56} style={{ color: '#D7E2EA' }} /> },
+  { name: 'Docker', icon: <img src="https://cdn.simpleicons.org/docker/D7E2EA" alt="Docker" referrerPolicy="no-referrer" className="w-14 h-14" /> },
   { name: 'Hugging Face', icon: <HuggingFace size={56} style={{ color: '#D7E2EA' }} /> },
-  { name: 'Ollama', icon: <Ollama size={56} style={{ color: '#D7E2EA' }} /> },
+  { name: 'PostgreSQL', icon: <img src="https://cdn.simpleicons.org/postgresql/D7E2EA" alt="PostgreSQL" referrerPolicy="no-referrer" className="w-14 h-14" /> },
 ];
 
 export function MarqueeSection() {

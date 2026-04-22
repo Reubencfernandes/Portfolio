@@ -14,18 +14,28 @@ type Project = {
 const projects: Project[] = [
   {
     id: '01',
-    title: 'Konkani Language Project (Personal)',
+    title: 'Konkani AI',
     videoId: 'dQw4w9WgXcQ',
   },
   {
     id: '02',
-    title: 'AI / LLM Research Project (Personal)',
+    title: 'Tiny AYA Mobile',
     videoId: 'M7lc1UVf-VE',
   },
   {
     id: '03',
-    title: 'Android App (Professional)',
+    title: 'PowerPoint AI',
     videoId: 'jNQXAC9IVRw',
+  },
+  {
+    id: '04',
+    title: 'Multi Model Dataset',
+    videoId: 'dQw4w9WgXcQ',
+  },
+  {
+    id: '05',
+    title: 'ISO Language',
+    videoId: 'M7lc1UVf-VE',
   },
 ];
 

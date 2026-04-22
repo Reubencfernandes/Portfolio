@@ -3,9 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { AnimatedText } from '../AnimatedText';
-import { ContactButton } from '../ContactButton';
 import { FadeIn } from '../FadeIn';
+import { ContactButton } from '../ContactButton';
+import { ImageFillText } from '../ImageFillText';
+
+const ABOUT_IMAGE_URL = '/about.png';
+const ABOUT_TEXT =
+  "I'm a Computer Science and Engineering graduate passionate about full-stack development, AI, and UI/UX design. I work across React, Next.js, Flutter, Node.js, and Python, with a growing focus on Large Language Models and AI research. I'm also building a Konkani language project to preserve my native tongue through technology. Let's build something incredible together!";
 
 export function AboutSection() {
   return (
@@ -46,22 +50,21 @@ export function AboutSection() {
         </motion.div>
       </FadeIn>
 
-      <FadeIn y={30} duration={0.8}>
-        <h2 className="font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)] inline-block text-transparent bg-clip-text bg-gradient-to-b from-[#FFE0D0] to-[#FF8C4C] mb-10 sm:mb-14 md:mb-16">
-          About me
-        </h2>
-      </FadeIn>
+      <div className="flex flex-col items-center w-full gap-10 sm:gap-14 md:gap-16">
+        <FadeIn y={40} duration={0.8}>
+          <h2 className="font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)] inline-block text-transparent bg-clip-text bg-gradient-to-b from-[#FFE0D0] to-[#FF8C4C]">
+            About me
+          </h2>
+        </FadeIn>
 
-      <div className="max-w-[600px] text-center mb-16 sm:mb-20 md:mb-24">
-        <AnimatedText
-          text="I'm a Computer Engineering graduate who loves building for the web. My toolkit includes React Next.js Flutter Node.js and Python. Right now I am exploring AI and building things with it. I am also into human languages which is why I built a Konkani LLM to bring my mother tongue into the future. If you have something worth building I'd love to make it with you."
-          className="text-[#D7E2EA] font-medium leading-relaxed text-[clamp(1rem,2vw,1.35rem)]"
-        />
+        <ImageFillText text={ABOUT_TEXT} imageSrc={ABOUT_IMAGE_URL} />
       </div>
 
-      <FadeIn y={20} delay={0.4} duration={0.8}>
-        <ContactButton />
-      </FadeIn>
+      <div className="mt-16 sm:mt-20 md:mt-24">
+        <FadeIn y={20} delay={0.4} duration={0.8}>
+          <ContactButton />
+        </FadeIn>
+      </div>
     </section>
   );
 }
