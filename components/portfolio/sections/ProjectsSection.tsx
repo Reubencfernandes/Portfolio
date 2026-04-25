@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { LiveProjectButton } from '../LiveProjectButton';
 import { FadeIn } from '../FadeIn';
@@ -8,34 +9,41 @@ import { FadeIn } from '../FadeIn';
 type Project = {
   id: string;
   title: string;
-  videoId: string;
+  image?: string;
+  videoId?: string;
+  liveUrl: string;
 };
 
 const projects: Project[] = [
   {
     id: '01',
     title: 'Konkani AI',
-    videoId: 'dQw4w9WgXcQ',
+    image: '/konkani.png',
+    liveUrl: 'https://reuben-fernandes.xyz',
   },
   {
     id: '02',
     title: 'Tiny AYA Mobile',
     videoId: 'M7lc1UVf-VE',
+    liveUrl: 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
   },
   {
     id: '03',
     title: 'PowerPoint AI',
-    videoId: 'jNQXAC9IVRw',
+    image: '/powerpoint.png',
+    liveUrl: 'https://huggingface.co/spaces/Reubencf/Powerpoint_AI',
   },
   {
     id: '04',
     title: 'Multi Model Dataset',
     videoId: 'dQw4w9WgXcQ',
+    liveUrl: 'https://huggingface.co/spaces/Reubencf/dataset-explorer',
   },
   {
     id: '05',
-    title: 'ISO Language',
-    videoId: 'M7lc1UVf-VE',
+    title: 'Reo',
+    videoId: 'zo_UkXzAfLk',
+    liveUrl: 'https://reo-fernandes.xyz/',
   },
 ];
 
@@ -96,15 +104,25 @@ function ProjectCard({
       >
         <div className="absolute inset-0 bg-[#1A0F08] -z-10"></div>
         <div className="w-full flex-1 relative bg-black">
-          <iframe
-            src={`https://www.youtube.com/embed/${project.videoId}?rel=0&modestbranding=1`}
-            className="w-full h-full absolute inset-0"
-            style={{ border: 0 }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            loading="lazy"
-            title={project.title}
-          />
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 1200px"
+            />
+          ) : (
+            <iframe
+              src={`https://www.youtube.com/embed/${project.videoId}?rel=0&modestbranding=1`}
+              className="w-full h-full absolute inset-0"
+              style={{ border: 0 }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              title={project.title}
+            />
+          )}
         </div>
 
         <div className="p-6 sm:p-8 md:p-10 bg-[#1A0F08] border-t border-[rgba(215,226,234,0.1)] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
@@ -113,7 +131,7 @@ function ProjectCard({
             <h3 className="text-[#D7E2EA] font-medium text-lg sm:text-xl md:text-2xl uppercase">{project.title}</h3>
           </div>
           <div className="shrink-0">
-            <LiveProjectButton href={`https://www.youtube.com/watch?v=${project.videoId}`} />
+            <LiveProjectButton href={project.liveUrl} label={project.image ? 'View Project' : 'Watch Project'} />
           </div>
         </div>
       </motion.div>

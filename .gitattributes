@@ -1,2 +1,4 @@
 *.png filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+public/konkani.png -filter -diff -merge -text
+public/powerpoint.png -filter -diff -merge -text
