@@ -11,6 +11,7 @@ type Project = {
   title: string;
   image?: string;
   videoId?: string;
+  embedUrl?: string;
   liveUrl: string;
 };
 
@@ -24,8 +25,8 @@ const projects: Project[] = [
   {
     id: '02',
     title: 'Tiny AYA Mobile',
-    videoId: 'M7lc1UVf-VE',
-    liveUrl: 'https://www.youtube.com/watch?v=M7lc1UVf-VE',
+    videoId: '3o4iHBwJyGw',
+    liveUrl: 'https://www.youtube.com/watch?v=3o4iHBwJyGw',
   },
   {
     id: '03',
@@ -36,7 +37,7 @@ const projects: Project[] = [
   {
     id: '04',
     title: 'Multi Model Dataset',
-    videoId: 'dQw4w9WgXcQ',
+    embedUrl: 'https://reubencf-dataset-explorer.hf.space',
     liveUrl: 'https://huggingface.co/spaces/Reubencf/dataset-explorer',
   },
   {
@@ -112,6 +113,14 @@ function ProjectCard({
               className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 1200px"
             />
+          ) : project.embedUrl ? (
+            <iframe
+              src={project.embedUrl}
+              className="w-full h-full absolute inset-0"
+              style={{ border: 0 }}
+              loading="lazy"
+              title={project.title}
+            />
           ) : (
             <iframe
               src={`https://www.youtube.com/embed/${project.videoId}?rel=0&modestbranding=1`}
@@ -131,7 +140,7 @@ function ProjectCard({
             <h3 className="text-[#D7E2EA] font-medium text-lg sm:text-xl md:text-2xl uppercase">{project.title}</h3>
           </div>
           <div className="shrink-0">
-            <LiveProjectButton href={project.liveUrl} label={project.image ? 'View Project' : 'Watch Project'} />
+            <LiveProjectButton href={project.liveUrl} label={project.image || project.embedUrl ? 'View Project' : 'Watch Project'} />
           </div>
         </div>
       </motion.div>
