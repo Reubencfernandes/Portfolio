@@ -37,7 +37,7 @@ const projects: Project[] = [
   {
     id: '04',
     title: 'Multi Model Dataset',
-    embedUrl: 'https://reubencf-dataset-explorer.hf.space',
+    image: '/HF.png',
     liveUrl: 'https://huggingface.co/spaces/Reubencf/dataset-explorer',
   },
   {
