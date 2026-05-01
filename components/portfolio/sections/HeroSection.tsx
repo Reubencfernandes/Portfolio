@@ -39,7 +39,7 @@ export function HeroSection() {
           <nav className="flex w-full md:w-auto justify-between md:justify-center flex-1 gap-2 sm:gap-6 md:gap-8">
             <a href="#about" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">About</a>
             <a href="#projects" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Projects</a>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Resume</a>
+            <a href="https://drive.google.com/file/d/1xtfEFmQHH51jj6KV7eWIOSzJ2v-3zJgo/view?usp=sharing" target="_blank" rel="noreferrer" className="text-[#1A0F08] font-black md:font-medium uppercase tracking-wider text-[11px] sm:text-xs md:text-sm hover:opacity-60 transition-opacity duration-200">Resume</a>
           </nav>
 
           <div className="hidden md:flex flex-1 justify-end">
