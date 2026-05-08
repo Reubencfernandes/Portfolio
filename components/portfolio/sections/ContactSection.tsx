@@ -23,7 +23,8 @@ export function ContactSection() {
       );
       setStatus('sent');
       formRef.current.reset();
-    } catch {
+    } catch (err) {
+      console.error('EmailJS Error:', err);
       setStatus('error');
     }
   }
