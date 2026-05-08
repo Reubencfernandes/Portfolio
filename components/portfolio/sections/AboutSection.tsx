@@ -9,7 +9,7 @@ import { ImageFillText } from '../ImageFillText';
 
 const ABOUT_IMAGE_URL = '/about.png';
 const ABOUT_TEXT =
-  "I'm a Computer Science and Engineering graduate passionate about full-stack development, AI, and UI/UX design. I work across React, Next.js, Flutter, Node.js, and Python, with a growing focus on Large Language Models and AI research. I'm also building a Konkani language project to preserve my native tongue through technology. Let's build something incredible together!";
+  "I'm Reuben Chagas Fernandes, a recent Computer Engineering graduate who builds full-stack apps and open-source AI models. My current focus is building LLMs from scratch and expanding AI accessibility for low-resource languages, recently publishing a Konkani LLM and datasets on Hugging Face. Beyond tech, I'm a linguistics enthusiast with a JLPT N5 certification in Japanese.";
 
 export function AboutSection() {
   return (
