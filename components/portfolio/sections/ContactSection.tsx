@@ -23,8 +23,7 @@ export function ContactSection() {
       );
       setStatus('sent');
       formRef.current.reset();
-    } catch (err) {
-      console.error('EmailJS Error:', err);
+    } catch {
       setStatus('error');
     }
   }
@@ -103,7 +102,7 @@ export function ContactSection() {
                 placeholder="Tell me about your project..."
                 rows={5}
                 required
-                className="w-full bg-transparent border-2 border-[#1A0F08] rounded-2xl px-5 py-4 text-[#1A0F08] placeholder-[#1A0F08]/40 font-mono text-sm sm:text-base focus:outline-none focus:border-[#E63F19] focus:shadow-[4px_4px_0px_0px_#E63F19] hover:shadow-[4px_4px_0px_0px_#1A0F08] hover:-translate-y-0.5 transition-all duration-200 resize-none"
+                className="w-full bg-transparent border-2 border-[#1A0F08] rounded-2xl px-5 py-4 text-[#1A0F08] placeholder-[#1A0F08]/40 font-mono text-sm sm:text-base focus:outline-none focus:border-[#E63F19] focus:shadow-[4px_4px_0px_0px_#E63F19] hover:shadow-[4px_4px_0px_0px_#1A0F08] hover:-translate-y-0.5 transition-all duration-200 resize-none theme-scrollbar"
               />
             </div>
             <button

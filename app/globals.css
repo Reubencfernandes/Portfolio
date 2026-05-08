@@ -13,25 +13,6 @@
     margin: 0;
     padding: 0;
   }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #1A0F08;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #E63F19;
-  }
 }
 
 @layer components {
@@ -66,4 +47,26 @@
   --input: oklch(0.88 0.05 95);
   --ring: oklch(0.92 0.14 110);
   --radius: 1.5rem;
+}
+
+@layer utilities {
+  .theme-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .theme-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .theme-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #1A0F08;
+    border-radius: 10px;
+  }
+  .theme-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #E63F19;
+  }
+  .theme-scrollbar {
+    scrollbar-color: #1A0F08 transparent;
+    scrollbar-width: thin;
+  }
 }
