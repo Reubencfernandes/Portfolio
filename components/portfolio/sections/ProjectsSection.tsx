@@ -9,6 +9,7 @@ import { FadeIn } from '../FadeIn';
 type Project = {
   id: string;
   title: string;
+  description: string;
   image?: string;
   videoId?: string;
   embedUrl?: string;
@@ -19,30 +20,35 @@ const projects: Project[] = [
   {
     id: '01',
     title: 'Konkani AI',
+    description: 'An AI platform designed to support, translate, and understand the Indian low-resource language called Konkani.',
     image: '/konkani.png',
     liveUrl: 'https://reuben-fernandes.xyz',
   },
   {
     id: '02',
-    title: 'Tiny AYA Mobile',
+    title: 'Cohere AYA Mobile',
+    description: 'A mobile application that uses the Cohere AYA Expanse model via API to translate, chat, and capture info about images.',
     videoId: '3o4iHBwJyGw',
     liveUrl: 'https://www.youtube.com/watch?v=3o4iHBwJyGw',
   },
   {
     id: '03',
     title: 'PowerPoint AI',
+    description: 'A service that lets you create PowerPoint presentations from a single AI prompt.',
     image: '/powerpoint.png',
     liveUrl: 'https://huggingface.co/spaces/Reubencf/Powerpoint_AI',
   },
   {
     id: '04',
     title: 'Multi Model Dataset',
+    description: 'A comprehensive collection of datasets created across text, images, audio, and video modalities.',
     image: '/HF.png',
     liveUrl: 'https://huggingface.co/spaces/Reubencf/dataset-explorer',
   },
   {
     id: '05',
     title: 'Reo',
+    description: 'A Discord bot that allows you to have AI-driven conversations and a roleplay-like system.',
     videoId: 'zo_UkXzAfLk',
     liveUrl: 'https://reo-fernandes.xyz/',
   },
@@ -138,8 +144,11 @@ function ProjectCard({
           <div className="flex flex-col gap-2">
             <span className="text-[#E63F19] font-mono text-xs sm:text-sm uppercase tracking-widest">{project.id}</span>
             <h3 className="text-[#D7E2EA] font-medium text-lg sm:text-xl md:text-2xl uppercase">{project.title}</h3>
+            <p className="text-[rgba(215,226,234,0.7)] text-xs sm:text-sm max-w-md leading-relaxed mt-1">
+              {project.description}
+            </p>
           </div>
-          <div className="shrink-0">
+          <div className="shrink-0 mt-2 sm:mt-0">
             <LiveProjectButton href={project.liveUrl} label={project.image || project.embedUrl ? 'View Project' : 'Watch Project'} />
           </div>
         </div>
