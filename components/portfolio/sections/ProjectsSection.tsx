@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useTransform, type MotionValue } from 'motion/react';
 import { LiveProjectButton } from '../LiveProjectButton';
 import { FadeIn } from '../FadeIn';
 
@@ -29,33 +29,38 @@ const projects: Project[] = [
     title: 'Cohere AYA Mobile',
     description: 'A mobile application that uses the Cohere AYA Expanse model via API to translate, chat, and capture info about images.',
     videoId: '3o4iHBwJyGw',
-    liveUrl: 'https://www.youtube.com/watch?v=3o4iHBwJyGw',
+    liveUrl: 'https://play.google.com/store/apps/dev?id=7189799619389857108',
   },
   {
     id: '03',
+    title: 'Nano Banana',
+    description: 'A powerful node-based image editor inspired by ComfyUI. It allows users to feed in images and build custom visual workflows to manipulate poses, heavily modify lighting, and completely transform image styles.',
+    videoId: 'K3Sq1er_tuE', // Add your YouTube/video ID here
+    liveUrl: 'https://huggingface.co/spaces/Reubencf/Nano_Banana_Editor', // Add the live URL here if you have one
+  },
+  {
+    id: '04',
     title: 'PowerPoint AI',
     description: 'A service that lets you create PowerPoint presentations from a single AI prompt.',
     image: '/powerpoint.png',
     liveUrl: 'https://huggingface.co/spaces/Reubencf/Powerpoint_AI',
   },
   {
-    id: '04',
+    id: '05',
     title: 'Multi Model Dataset',
     description: 'A comprehensive collection of datasets created across text, images, audio, and video modalities.',
     image: '/HF.png',
     liveUrl: 'https://huggingface.co/spaces/Reubencf/dataset-explorer',
   },
-  {
-    id: '05',
-    title: 'Reo',
-    description: 'A Discord bot that allows you to have AI-driven conversations and a roleplay-like system.',
-    videoId: 'zo_UkXzAfLk',
-    liveUrl: 'https://reo-fernandes.xyz/',
-  },
 ];
 
 export function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
 
   return (
     <section id="projects" className="dark-section rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
@@ -72,7 +77,7 @@ export function ProjectsSection() {
             project={proj}
             index={i}
             totalCards={projects.length}
-            containerRef={containerRef}
+            scrollYProgress={scrollYProgress}
           />
         ))}
       </div>
@@ -84,27 +89,20 @@ function ProjectCard({
   project,
   index,
   totalCards,
-  containerRef,
+  scrollYProgress,
 }: {
   project: Project;
   index: number;
   totalCards: number;
-  containerRef: React.RefObject<HTMLDivElement | null>;
+  scrollYProgress: MotionValue<number>;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress: containerScroll } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
   const targetScale = 1 - (totalCards - 1 - index) * 0.03;
-  const scale = useTransform(containerScroll, [index * (1 / totalCards), 1], [1, targetScale]);
+  const scale = useTransform(scrollYProgress, [index * (1 / totalCards), 1], [1, targetScale]);
 
   const topOffset = `calc(6rem + ${index * 30}px)`;
 
   return (
-    <div ref={cardRef} className="h-[85vh] flex items-center justify-center sticky" style={{ top: topOffset }}>
+    <div className="h-[85vh] flex items-center justify-center sticky" style={{ top: topOffset }}>
       <motion.div
         style={{ scale }}
         className="w-full h-full max-h-[800px] flex flex-col rounded-3xl overflow-hidden relative shadow-2xl origin-top"
@@ -128,15 +126,7 @@ function ProjectCard({
               title={project.title}
             />
           ) : (
-            <iframe
-              src={`https://www.youtube.com/embed/${project.videoId}?rel=0&modestbranding=1`}
-              className="w-full h-full absolute inset-0"
-              style={{ border: 0 }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-              title={project.title}
-            />
+            <YouTubeFacade videoId={project.videoId!} title={project.title} />
           )}
         </div>
 
@@ -154,5 +144,52 @@ function ProjectCard({
         </div>
       </motion.div>
     </div>
+  );
+}
+
+function YouTubeFacade({ videoId, title }: { videoId: string; title: string }) {
+  const [activated, setActivated] = useState(false);
+  const [thumbSrc, setThumbSrc] = useState(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`);
+
+  if (activated) {
+    return (
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1`}
+        className="w-full h-full absolute inset-0"
+        style={{ border: 0 }}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        title={title}
+      />
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => setActivated(true)}
+      className="absolute inset-0 w-full h-full group cursor-pointer"
+      aria-label={`Play ${title}`}
+    >
+      <img
+        src={thumbSrc}
+        alt={title}
+        className="w-full h-full object-cover"
+        loading="lazy"
+        onError={() => setThumbSrc(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`)}
+        onLoad={(e) => {
+          if (e.currentTarget.naturalWidth <= 120) {
+            setThumbSrc(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`);
+          }
+        }}
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#E63F19] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+          <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7 sm:w-8 sm:h-8 ml-1">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    </button>
   );
 }
