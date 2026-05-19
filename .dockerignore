@@ -5,6 +5,11 @@ node_modules
 .dockerignore
 Dockerfile
 npm-debug.log
-.env*.local
+.env
+.env.*
+!.env.example
 .vscode
 .idea
+out
+build_log.txt
+tsconfig.tsbuildinfo
