@@ -32,14 +32,11 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=7860
 ENV HOSTNAME=0.0.0.0
 
-RUN addgroup --system --gid 1000 user
-RUN adduser --system --uid 1000 --ingroup user user
+COPY --from=builder --chown=node:node /app/public ./public
+COPY --from=builder --chown=node:node /app/.next/standalone ./
+COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 
-COPY --from=builder --chown=user:user /app/public ./public
-COPY --from=builder --chown=user:user /app/.next/standalone ./
-COPY --from=builder --chown=user:user /app/.next/static ./.next/static
-
-USER user
+USER node
 
 EXPOSE 7860
 
