@@ -21,7 +21,7 @@ const projects: Project[] = [
     id: '01',
     title: 'Konkani AI',
     description: 'An AI platform designed to support, translate, and understand the Indian low-resource language called Konkani.',
-    image: '/konkani.png',
+    videoId: '8K04ylbXh6k',
     liveUrl: 'https://reuben-fernandes.xyz',
   },
   {
