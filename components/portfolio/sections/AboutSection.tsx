@@ -9,7 +9,7 @@ import { ImageFillText } from '../ImageFillText';
 
 const ABOUT_IMAGE_URL = '/about.png';
 const ABOUT_TEXT =
-  "I'm Reuben Chagas Fernandes, a recent Computer Engineering graduate who builds full-stack apps and open-source AI models. My current focus is building LLMs from scratch and expanding AI accessibility for low-resource languages, recently publishing a Konkani LLM and datasets on Hugging Face. Beyond tech, I'm a linguistics enthusiast with a JLPT N5 certification in Japanese.";
+  "I'm Reuben Chagas Fernandes, a full stack developer who loves building beautiful web pages. I've also got a good deal of experience creating and publishing apps to the Play Store and App Store with Flutter, and lately I've been deep into exploring LLMs and agents. Outside of code I'm into music and learning languages. I'm N5 certified in Japanese.";
 
 export function AboutSection() {
   return (
@@ -19,7 +19,7 @@ export function AboutSection() {
           animate={{ y: [0, -14, 0] }}
           transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <Image src="/computer.png" alt="Computer" width={420} height={420} className="w-full h-auto" priority />
+          <Image src="/computer.png" alt="Computer" width={420} height={420} className="w-full h-auto" loading="lazy" />
         </motion.div>
       </FadeIn>
 
@@ -28,7 +28,7 @@ export function AboutSection() {
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 5.4, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
         >
-          <Image src="/bible.png" alt="Bible" width={420} height={420} className="w-full h-auto" priority />
+          <Image src="/bible.png" alt="Bible" width={420} height={420} className="w-full h-auto" loading="lazy" />
         </motion.div>
       </FadeIn>
 

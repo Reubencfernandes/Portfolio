@@ -6,6 +6,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   turbopack: {
     root: __dirname,
   },

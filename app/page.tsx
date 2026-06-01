@@ -1,9 +1,21 @@
 import { HeroSection } from '@/components/portfolio/sections/HeroSection';
-import { MarqueeSection } from '@/components/portfolio/sections/MarqueeSection';
-import { AboutSection } from '@/components/portfolio/sections/AboutSection';
-import { ProjectsSection } from '@/components/portfolio/sections/ProjectsSection';
-import { ContactSection } from '@/components/portfolio/sections/ContactSection';
-import { Footer } from '@/components/portfolio/sections/Footer';
+import dynamic from 'next/dynamic';
+
+const MarqueeSection = dynamic(() =>
+  import('@/components/portfolio/sections/MarqueeSection').then((m) => m.MarqueeSection)
+);
+const AboutSection = dynamic(() =>
+  import('@/components/portfolio/sections/AboutSection').then((m) => m.AboutSection)
+);
+const ProjectsSection = dynamic(() =>
+  import('@/components/portfolio/sections/ProjectsSection').then((m) => m.ProjectsSection)
+);
+const ContactSection = dynamic(() =>
+  import('@/components/portfolio/sections/ContactSection').then((m) => m.ContactSection)
+);
+const Footer = dynamic(() =>
+  import('@/components/portfolio/sections/Footer').then((m) => m.Footer)
+);
 
 export default function Home() {
   return (

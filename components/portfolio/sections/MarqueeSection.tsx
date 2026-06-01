@@ -11,23 +11,23 @@ type TechItem = {
 };
 
 const row1: TechItem[] = [
-  { name: 'React', icon: <img src="https://cdn.simpleicons.org/react/D7E2EA" alt="React" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'Next.js', icon: <img src="https://cdn.simpleicons.org/nextdotjs/D7E2EA" alt="Next.js" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'TypeScript', icon: <img src="https://cdn.simpleicons.org/typescript/D7E2EA" alt="TypeScript" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'Tailwind CSS', icon: <img src="https://cdn.simpleicons.org/tailwindcss/D7E2EA" alt="Tailwind CSS" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'Node.js', icon: <img src="https://cdn.simpleicons.org/nodedotjs/D7E2EA" alt="Node.js" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'Python', icon: <img src="https://cdn.simpleicons.org/python/D7E2EA" alt="Python" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'PHP', icon: <img src="https://cdn.simpleicons.org/php/D7E2EA" alt="PHP" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'Flutter', icon: <img src="https://cdn.simpleicons.org/flutter/D7E2EA" alt="Flutter" referrerPolicy="no-referrer" className="w-14 h-14" /> },
+  { name: 'React', icon: <img src="https://cdn.simpleicons.org/react/D7E2EA" alt="React" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'Next.js', icon: <img src="https://cdn.simpleicons.org/nextdotjs/D7E2EA" alt="Next.js" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'TypeScript', icon: <img src="https://cdn.simpleicons.org/typescript/D7E2EA" alt="TypeScript" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'Tailwind CSS', icon: <img src="https://cdn.simpleicons.org/tailwindcss/D7E2EA" alt="Tailwind CSS" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'Node.js', icon: <img src="https://cdn.simpleicons.org/nodedotjs/D7E2EA" alt="Node.js" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'Python', icon: <img src="https://cdn.simpleicons.org/python/D7E2EA" alt="Python" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'PHP', icon: <img src="https://cdn.simpleicons.org/php/D7E2EA" alt="PHP" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'Flutter', icon: <img src="https://cdn.simpleicons.org/flutter/D7E2EA" alt="Flutter" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
 ];
 
 const row2: TechItem[] = [
-  { name: 'Firebase', icon: <img src="https://cdn.simpleicons.org/firebase/D7E2EA" alt="Firebase" referrerPolicy="no-referrer" className="w-14 h-14" /> },
-  { name: 'MongoDB', icon: <img src="https://cdn.simpleicons.org/mongodb/D7E2EA" alt="MongoDB" referrerPolicy="no-referrer" className="w-14 h-14" /> },
+  { name: 'Firebase', icon: <img src="https://cdn.simpleicons.org/firebase/D7E2EA" alt="Firebase" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
+  { name: 'MongoDB', icon: <img src="https://cdn.simpleicons.org/mongodb/D7E2EA" alt="MongoDB" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
   { name: 'Claude', icon: <Claude size={56} style={{ color: '#D7E2EA' }} /> },
-  { name: 'Docker', icon: <img src="https://cdn.simpleicons.org/docker/D7E2EA" alt="Docker" referrerPolicy="no-referrer" className="w-14 h-14" /> },
+  { name: 'Docker', icon: <img src="https://cdn.simpleicons.org/docker/D7E2EA" alt="Docker" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
   { name: 'Hugging Face', icon: <HuggingFace size={56} style={{ color: '#D7E2EA' }} /> },
-  { name: 'PostgreSQL', icon: <img src="https://cdn.simpleicons.org/postgresql/D7E2EA" alt="PostgreSQL" referrerPolicy="no-referrer" className="w-14 h-14" /> },
+  { name: 'PostgreSQL', icon: <img src="https://cdn.simpleicons.org/postgresql/D7E2EA" alt="PostgreSQL" referrerPolicy="no-referrer" loading="lazy" decoding="async" width={56} height={56} className="w-14 h-14" /> },
 ];
 
 export function MarqueeSection() {

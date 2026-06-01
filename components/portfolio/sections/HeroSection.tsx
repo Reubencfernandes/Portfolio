@@ -1,35 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import Image from 'next/image';
 import { ContactButton } from '../ContactButton';
 import { FadeIn } from '../FadeIn';
 
 export function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!videoRef.current) return;
-      const scrollY = window.scrollY;
-
-      if (scrollY > 5) {
-        if (videoRef.current.paused) {
-          videoRef.current.play().catch((e) => console.log('Autoplay prevented:', e));
-        }
-      } else {
-        if (!videoRef.current.paused) {
-          videoRef.current.pause();
-        }
-        videoRef.current.currentTime = 0;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section className="h-screen w-full hero-bg relative overflow-hidden flex flex-col">
       <FadeIn delay={0} y={-20} duration={0.7} className="w-full relative z-20">
@@ -71,18 +47,18 @@ export function HeroSection() {
         </div>
 
         <div className="absolute right-0 top-0 bottom-0 w-[90%] sm:w-[70%] md:w-[50%] lg:w-[45%] z-0 h-full">
-          <FadeIn delay={0.1} x={60} y={0} duration={1.0} className="w-full h-full">
-            <video
-              ref={videoRef}
-              src="/Reuben.mp4"
-              className="absolute right-0 top-0 bottom-0 w-full h-full object-cover object-center pointer-events-none"
+          <FadeIn delay={0.1} x={60} y={0} duration={1.0} className="relative w-full h-full">
+            <Image
+              src="/reuben.png"
+              alt="Reuben Chagas Fernandes"
+              fill
+              priority
+              sizes="(max-width: 768px) 90vw, 45vw"
+              className="object-cover object-center pointer-events-none"
               style={{
                 WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 35%, black 100%)',
                 maskImage: 'linear-gradient(to right, transparent 0%, black 35%, black 100%)',
               }}
-              muted
-              playsInline
-              loop
             />
           </FadeIn>
         </div>
