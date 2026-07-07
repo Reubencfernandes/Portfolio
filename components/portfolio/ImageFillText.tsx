@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useEffect, useCallback } from 'react';
-import { useScroll } from 'motion/react';
 
 const MAX_W = 700;
 const ASPECT = 0.75;
@@ -75,11 +74,6 @@ export function ImageFillText({ text, imageSrc }: { text: string; imageSrc: stri
   const scrollRef = useRef(0);
   const charPosRef = useRef<CharPos[]>([]);
   const canvasSizeRef = useRef({ w: 700, h: Math.round(700 * ASPECT) });
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 0.8', 'end 0.2'],
-  });
 
   const drawFrame = useCallback(() => {
     const main = mainCanvasRef.current;
@@ -183,13 +177,34 @@ export function ImageFillText({ text, imageSrc }: { text: string; imageSrc: stri
   }, [resizeCanvases, drawFrame]);
 
   useEffect(() => {
-    const unsub = scrollYProgress.on('change', (v) => {
-      scrollRef.current = v;
+    const container = containerRef.current;
+    if (!container) return;
+
+    let raf = 0;
+    // Progress 0 when the container top reaches 80% of the viewport height,
+    // 1 when its bottom reaches 20% (same as motion's ['start 0.8', 'end 0.2']).
+    const update = () => {
+      raf = 0;
+      const rect = container.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.8;
+      const end = vh * 0.2 - rect.height;
+      scrollRef.current = clamp((rect.top - start) / (end - start), 0, 1);
       drawFrame();
-    });
-    drawFrame();
-    return unsub;
-  }, [scrollYProgress, drawFrame]);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [drawFrame]);
 
   return (
     <div

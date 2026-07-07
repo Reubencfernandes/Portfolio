@@ -1,14 +1,11 @@
-'use client';
-
 import React from 'react';
 import Image from 'next/image';
 import { ContactButton } from '../ContactButton';
-import { FadeIn } from '../FadeIn';
 
 export function HeroSection() {
   return (
     <section className="h-screen w-full hero-bg relative overflow-hidden flex flex-col">
-      <FadeIn delay={0} y={-20} duration={0.7} className="w-full relative z-20">
+      <div className="anim-fade-down w-full relative z-20">
         <header className="px-5 sm:px-8 md:px-10 pt-5 sm:pt-6 md:pt-8 flex justify-between items-center w-full">
           <div className="hidden md:block flex-1"></div>
 
@@ -22,34 +19,34 @@ export function HeroSection() {
             <ContactButton />
           </div>
         </header>
-      </FadeIn>
+      </div>
 
       <div className="flex-1 w-full px-6 md:px-10 pb-10 md:pb-14 flex items-end container mx-auto">
         <div className="z-10 relative w-full md:w-[55%] lg:w-[60%] flex flex-col gap-3 sm:gap-4 mt-8 md:mt-0">
-          <FadeIn delay={0.2} y={20} duration={0.7}>
+          <div className="anim-fade-up [animation-delay:0.2s]">
             <div className="mb-2 md:mb-4">
               <p className="text-[#FFE0D0] font-medium text-[11px] sm:text-xs md:text-sm uppercase tracking-wider opacity-90 drop-shadow-md">Hi, I&apos;m Reuben</p>
               <p className="text-[#FFE0D0] font-medium text-[11px] sm:text-xs md:text-sm uppercase tracking-wider opacity-90 drop-shadow-md">Full-Stack Developer</p>
             </div>
-          </FadeIn>
+          </div>
 
-          <FadeIn delay={0.35} y={40} duration={0.9}>
+          <div className="anim-hero-title">
             <h1 className="font-black text-[#FFE0D0] tracking-tight leading-[0.85] text-[15.5vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] drop-shadow-2xl">
               Reuben<br />Fernandes<span className="text-[#FF8C4C]">.</span>
             </h1>
-          </FadeIn>
+          </div>
 
-          <FadeIn delay={0.6} y={20} duration={0.7} className="md:hidden mt-4">
+          <div className="anim-fade-up [animation-delay:0.6s] md:hidden mt-4">
             <div className="flex flex-col items-start gap-1">
               <p className="text-[#FFE0D0] font-medium text-[10px] uppercase tracking-wider opacity-80 drop-shadow-md">Based in Goa, India</p>
             </div>
-          </FadeIn>
+          </div>
         </div>
 
         <div className="absolute right-0 top-0 bottom-0 w-[90%] sm:w-[70%] md:w-[50%] lg:w-[45%] z-0 h-full">
-          <FadeIn delay={0.1} x={60} y={0} duration={1.0} className="relative w-full h-full">
+          <div className="anim-hero-image relative w-full h-full">
             <Image
-              src="/reuben.png"
+              src="/reuben.webp"
               alt="Reuben Chagas Fernandes"
               fill
               priority
@@ -60,15 +57,15 @@ export function HeroSection() {
                 maskImage: 'linear-gradient(to right, transparent 0%, black 35%, black 100%)',
               }}
             />
-          </FadeIn>
+          </div>
         </div>
       </div>
 
-      <FadeIn delay={0.6} y={20} duration={0.7} className="hidden md:flex z-10 absolute bottom-20 right-10">
+      <div className="anim-fade-up [animation-delay:0.6s] hidden md:flex z-10 absolute bottom-20 right-10">
         <div className="flex flex-col items-end gap-1">
           <p className="text-[#FFE0D0] font-medium text-sm uppercase tracking-wider text-right opacity-90 drop-shadow-md">Based in Goa, India</p>
         </div>
-      </FadeIn>
+      </div>
     </section>
   );
 }

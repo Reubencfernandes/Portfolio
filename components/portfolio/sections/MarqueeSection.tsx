@@ -1,7 +1,7 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Claude from '@lobehub/icons/es/Claude/components/Mono';
 import HuggingFace from '@lobehub/icons/es/HuggingFace/components/Mono';
 
@@ -31,28 +31,44 @@ const row2: TechItem[] = [
 ];
 
 export function MarqueeSection() {
-  const [offset, setOffset] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const row1Ref = useRef<HTMLDivElement>(null);
+  const row2Ref = useRef<HTMLDivElement>(null);
 
+  // Write transforms straight to the DOM on scroll — going through setState
+  // here re-renders every tile on each scroll event.
   useEffect(() => {
-    const handleScroll = () => {
-      const sectionElement = document.getElementById('marquee-section');
-      if (sectionElement) {
-        const sectionTop = sectionElement.offsetTop;
-        const currentOffset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-        setOffset(currentOffset);
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const section = sectionRef.current;
+      if (!section) return;
+      const offset = (window.scrollY - section.offsetTop + window.innerHeight) * 0.3;
+      if (row1Ref.current) {
+        row1Ref.current.style.transform = `translate3d(${-(offset - 200)}px, 0, 0)`;
+      }
+      if (row2Ref.current) {
+        row2Ref.current.style.transform = `translate3d(${offset - 800}px, 0, 0)`;
       }
     };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
-    <section id="marquee-section" className="dark-section pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden relative">
+    <section ref={sectionRef} id="marquee-section" className="dark-section pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-[#E63F19] to-transparent mix-blend-overlay opacity-30 pointer-events-none"></div>
 
       <div className="flex flex-col gap-6">
-        <div className="flex whitespace-nowrap will-change-transform" style={{ transform: `translate3d(${-(offset - 200)}px, 0, 0)` }}>
+        <div ref={row1Ref} className="flex whitespace-nowrap will-change-transform">
           {[...row1, ...row1, ...row1].map((item, idx) => (
             <div key={idx} className="w-[220px] h-[160px] mx-3 flex flex-col justify-center items-center gap-3 bg-[rgba(215,226,234,0.04)] border border-[rgba(215,226,234,0.1)] rounded-2xl shrink-0">
               <div className="w-[56px] h-[56px] flex items-center justify-center">
@@ -65,7 +81,7 @@ export function MarqueeSection() {
           ))}
         </div>
 
-        <div className="flex whitespace-nowrap will-change-transform" style={{ transform: `translate3d(${offset - 800}px, 0, 0)` }}>
+        <div ref={row2Ref} className="flex whitespace-nowrap will-change-transform">
           {[...row2, ...row2, ...row2].map((item, idx) => (
             <div key={idx} className="w-[220px] h-[160px] mx-3 flex flex-col justify-center items-center gap-3 bg-[rgba(215,226,234,0.04)] border border-[rgba(215,226,234,0.1)] rounded-2xl shrink-0">
               <div className="w-[56px] h-[56px] flex items-center justify-center">

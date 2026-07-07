@@ -24,6 +24,91 @@
     background-color: #0C0C0C;
     color: #D7E2EA;
   }
+
+  /* Hero entrance animations run in pure CSS so the hero paints before JS
+     hydrates. The h1 and portrait animate transform only (never opacity) so
+     the LCP element is visible from the first frame. */
+  .anim-fade-down {
+    animation: fade-down 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .anim-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .anim-hero-title {
+    animation: rise 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+    animation-delay: 0.35s;
+  }
+
+  .anim-hero-image {
+    animation: slide-in-right 1s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+    animation-delay: 0.1s;
+  }
+
+  .anim-float {
+    animation: float 4.8s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anim-fade-down,
+    .anim-fade-up,
+    .anim-hero-title,
+    .anim-hero-image,
+    .anim-float {
+      animation: none;
+    }
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(40px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(60px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 :root {

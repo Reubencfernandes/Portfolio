@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform, type MotionValue } from 'motion/react';
 import { LiveProjectButton } from '../LiveProjectButton';
 import { FadeIn } from '../FadeIn';
 
@@ -56,11 +55,43 @@ const projects: Project[] = [
 
 export function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  // As the container scrolls (0 = top hits viewport top, 1 = bottom hits
+  // viewport bottom), earlier cards shrink slightly so the stack reads as
+  // layered. Transforms are written directly to the DOM to avoid re-renders.
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let raf = 0;
+    const total = projects.length;
+    const update = () => {
+      raf = 0;
+      const rect = container.getBoundingClientRect();
+      const denom = rect.height - window.innerHeight;
+      const progress = denom > 0 ? Math.min(1, Math.max(0, -rect.top / denom)) : 0;
+      cardRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const targetScale = 1 - (total - 1 - i) * 0.03;
+        const start = i / total;
+        const t = Math.min(1, Math.max(0, (progress - start) / (1 - start)));
+        el.style.transform = `scale(${1 + (targetScale - 1) * t})`;
+      });
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <section id="projects" className="dark-section rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 relative z-20 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
@@ -76,8 +107,9 @@ export function ProjectsSection() {
             key={proj.id}
             project={proj}
             index={i}
-            totalCards={projects.length}
-            scrollYProgress={scrollYProgress}
+            cardRef={(el) => {
+              cardRefs.current[i] = el;
+            }}
           />
         ))}
       </div>
@@ -88,23 +120,18 @@ export function ProjectsSection() {
 function ProjectCard({
   project,
   index,
-  totalCards,
-  scrollYProgress,
+  cardRef,
 }: {
   project: Project;
   index: number;
-  totalCards: number;
-  scrollYProgress: MotionValue<number>;
+  cardRef: (el: HTMLDivElement | null) => void;
 }) {
-  const targetScale = 1 - (totalCards - 1 - index) * 0.03;
-  const scale = useTransform(scrollYProgress, [index * (1 / totalCards), 1], [1, targetScale]);
-
   const topOffset = `calc(6rem + ${index * 30}px)`;
 
   return (
     <div className="h-[85vh] flex items-center justify-center sticky" style={{ top: topOffset }}>
-      <motion.div
-        style={{ scale }}
+      <div
+        ref={cardRef}
         className="w-full h-full max-h-[800px] flex flex-col rounded-3xl overflow-hidden relative shadow-2xl origin-top"
       >
         <div className="absolute inset-0 bg-[#1A0F08] -z-10"></div>
@@ -142,7 +169,7 @@ function ProjectCard({
             <LiveProjectButton href={project.liveUrl} label={project.image || project.embedUrl ? 'View Project' : 'Watch Project'} />
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

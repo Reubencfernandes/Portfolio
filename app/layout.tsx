@@ -6,7 +6,7 @@ const kanit = Kanit({
   subsets: ["latin"],
   // Only the weights actually used in the UI (light→black). Trimmed from all 9
   // to cut self-hosted font payload.
-  weight: ["300", "400", "500", "600", "700", "900"],
+  weight: ["300", "400", "500", "700", "900"],
   variable: "--font-kanit",
   display: "swap",
 });
